@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Simpsons</string>
+    <string name="characters">Characters</string>
+    <string name="sort">Sort</string>
+    <string name="ascending">A-Z</string>
+    <string name="descending">Z-A</string>
+    <string name="something_went_wrong">Something Went Wrong \nPull to refresh</string>
+    <string name="empty_data">No Data Available Now \nPull to refresh</string>
+    <string name="search">Search</string>
+    <string name="item_description">Description</string>
+    <string name="no_data_found">No Data Found !</string>
+</resources>

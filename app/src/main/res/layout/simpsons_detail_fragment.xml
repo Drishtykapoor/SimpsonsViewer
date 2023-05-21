@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:padding="10dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/teamTitle"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginVertical="@dimen/margin_large"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/padding_large"
+            android:paddingEnd="@dimen/padding_large"
+            android:text="@string/item_description"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            app:layout_constraintWidth_min="@dimen/sat_score_label_min_width" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_large"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/padding_large"
+            android:paddingEnd="@dimen/padding_large"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/teamTitle"
+            app:layout_constraintTop_toTopOf="@+id/teamTitle" />
+
+        <TextView
+            android:id="@+id/teamDescription"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginVertical="@dimen/margin_large"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/padding_large"
+            android:paddingEnd="@dimen/padding_large"
+            android:text="@string/item_description"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/teamTitle"
+            app:layout_constraintWidth_min="@dimen/sat_score_label_min_width" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_large"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/padding_large"
+            android:paddingEnd="@dimen/padding_large"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:maxLines="8"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/teamDescription"
+            app:layout_constraintTop_toTopOf="@+id/teamDescription" />
+
+        <TextView
+            android:id="@+id/events_error_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_large"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/padding_large"
+            android:paddingEnd="@dimen/padding_large"
+            android:text="@string/no_data_found"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/teamDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
