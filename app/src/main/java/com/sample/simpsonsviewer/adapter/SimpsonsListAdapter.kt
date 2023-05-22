@@ -1,6 +1,7 @@
 package com.sample.simpsonsviewer.adapter
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,14 +37,22 @@ class SimpsonsListAdapter @Inject constructor(val navController: NavController) 
         val name: TextView = itemView.findViewById(R.id.title)
         private val image: ImageView = itemView.findViewById(R.id.image_view)
 
+        init {
+            itemView.setOnClickListener {
+                navController.navigate(R.id.simpsonsDetailFragment, Bundle().apply {
+                    this.putString("name", myData[bindingAdapterPosition].Text)
+                })
+            }
+        }
+
         fun onBind(topic: RelatedTopic) {
             name.text = topic.Text
-            Picasso
-                .with(image.context)
-                .load(
-                    topic.Icon?.URL ?: "https://www.freeiconspng.com/thumbs/duck-png/duck-png-19.png"
-                )
-                .into(image)
+            topic.Icon?.URL?.let {
+                Picasso
+                    .with(image.context)
+                    .load(it)
+                    .into(image)
+            }
         }
     }
 

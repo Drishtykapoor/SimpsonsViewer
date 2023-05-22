@@ -1,11 +1,16 @@
 package com.sample.simpsonsviewer.view
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentContainerView
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sample.simpsonsviewer.R
 import com.sample.simpsonsviewer.adapter.SimpsonsListAdapter
@@ -24,10 +29,8 @@ class SimpsonsHomeFragment : DaggerFragment(),
     @Inject
     lateinit var viewModel: SimpsonsHomeViewModelImpl
 
-    @Inject
     lateinit var adapter: SimpsonsListAdapter
 
-    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,11 +40,14 @@ class SimpsonsHomeFragment : DaggerFragment(),
             viewModel.refreshData()
         }
         binding.recyclerview.layoutManager = LinearLayoutManager(context)
+        val detailContainer =
+            binding.root.findViewById<FragmentContainerView>(R.id.item_detail_nav_container)
+        adapter =
+            SimpsonsListAdapter(detailContainer?.findNavController() ?: findNavController())
         binding.recyclerview.adapter = adapter
         binding.recyclerview.addItemDecoration(
             VerticalMarginDecorator(resources.getDimensionPixelSize(R.dimen.margin_large))
         )
-        binding.sort.setOnClickListener { showPopup(it) }
         return binding.root
     }
 
@@ -76,14 +82,13 @@ class SimpsonsHomeFragment : DaggerFragment(),
         binding.errorImage.background =
             ResourcesCompat.getDrawable(resources, R.drawable.sad_cloud, null)
         binding.errorText.isVisible = true
-        binding.errorText.text = context?.getString(R.string.something_went_wrong)
+        binding.errorText.text = it
         hideRefresh()
     }
 
     private fun hideError() {
         binding.errorImage.isVisible = false
         binding.errorText.isVisible = false
-        binding.errorText.text = context?.getString(R.string.something_went_wrong)
         hideRefresh()
     }
 
@@ -97,26 +102,8 @@ class SimpsonsHomeFragment : DaggerFragment(),
         hideRefresh()
     }
 
-    private fun showPopup(v: View) {
-        context?.let {
-            val popup = PopupMenu(it, v)
-            val inflater: MenuInflater = popup.menuInflater
-            inflater.inflate(R.menu.sort_menu, popup.menu)
-            popup.setOnMenuItemClickListener(this)
-            popup.show()
-        }
-    }
-
     override fun onMenuItemClick(item: MenuItem): Boolean {
         return when (item.itemId) {
-//            R.id.ascending -> {
-//                adapter.sort(SortOrder.Ascending)
-//                true
-//            }
-//            R.id.descending -> {
-//                adapter.sort(SortOrder.Descending)
-//                true
-//            }
             else -> false
         }
     }

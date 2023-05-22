@@ -9,4 +9,7 @@
     <string name="search">Search</string>
     <string name="item_description">Description</string>
     <string name="no_data_found">No Data Found !</string>
+    <string name="title_activity_item_detail_host">ItemDetailHostActivity</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
 </resources>

@@ -16,6 +16,7 @@ abstract class ActivityModule {
             UtilModule::class,
             NavigationModule::class,
             SimpsonsHomeFragmentModule::class,
+            SimpsonsDetailFragmentModule::class,
             ApiModule::class
         ]
     )

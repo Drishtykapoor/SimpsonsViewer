@@ -15,6 +15,10 @@
     <fragment
         android:id="@+id/simpsonsDetailFragment"
         android:name="com.sample.simpsonsviewer.view.SimpsonsDetailFragment">
+        <argument
+            android:name="item_id"
+            android:defaultValue=""
+            app:argType="string" />
     </fragment>
 
 </navigation>

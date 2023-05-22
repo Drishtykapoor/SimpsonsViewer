@@ -8,4 +8,11 @@
     <dimen name="padding_small">4dp</dimen>
     <dimen name="padding_large">8dp</dimen>
     <dimen name="sat_score_label_min_width">150dp</dimen>
+    <dimen name="item_width">500dp</dimen>
+    <dimen name="list_width">380dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="app_bar_height">200dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="container_margin">8dp</dimen>
+    <dimen name="container_horizontal_margin">16dp</dimen>
 </resources>
