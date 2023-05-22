@@ -1,11 +1,12 @@
 package com.sample.simpsonsviewer.view
 
 import android.os.Bundle
+
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.PopupMenu
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentContainerView
@@ -21,8 +22,7 @@ import com.sample.simpsonsviewer.viewmodel.SimpsonsHomeViewModelImpl
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class SimpsonsHomeFragment : DaggerFragment(),
-    PopupMenu.OnMenuItemClickListener {
+class SimpsonsHomeFragment : DaggerFragment(), TextWatcher {
 
     private lateinit var binding: SimpsonsHomeFragmentBinding
 
@@ -48,6 +48,9 @@ class SimpsonsHomeFragment : DaggerFragment(),
         binding.recyclerview.addItemDecoration(
             VerticalMarginDecorator(resources.getDimensionPixelSize(R.dimen.margin_large))
         )
+
+        binding.searchText?.addTextChangedListener(this)
+
         return binding.root
     }
 
@@ -102,9 +105,11 @@ class SimpsonsHomeFragment : DaggerFragment(),
         hideRefresh()
     }
 
-    override fun onMenuItemClick(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            else -> false
-        }
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        adapter.filterData(s.toString())
     }
+
+    override fun afterTextChanged(s: Editable?) {}
 }

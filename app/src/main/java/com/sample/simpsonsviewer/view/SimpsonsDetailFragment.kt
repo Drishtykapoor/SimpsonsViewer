@@ -25,6 +25,11 @@ class SimpsonsDetailFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         val data = arguments?.getString("name", "No Value passed")
         binding.teamDescription.text = data
+
+//        Picasso.with(context)
+//            .load(character[0].Icon?.URL ?: "")
+//            .into(binding.image)
+
     }
 
 }

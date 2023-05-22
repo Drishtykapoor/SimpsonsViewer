@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.sample.simpsonsviewer.R
 import com.sample.simpsonsviewer.repository.pojo.RelatedTopic
+import com.sample.simpsonsviewer.viewmodel.SortOrder
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
@@ -18,6 +19,7 @@ class SimpsonsListAdapter @Inject constructor(val navController: NavController) 
     RecyclerView.Adapter<SimpsonsListAdapter.ViewHolder>() {
 
     private val myData = mutableListOf<RelatedTopic>()
+    private val originalDataSet = mutableListOf<RelatedTopic>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -53,13 +55,33 @@ class SimpsonsListAdapter @Inject constructor(val navController: NavController) 
                     .load(it)
                     .into(image)
             }
+
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(topics: List<RelatedTopic>) {
+        originalDataSet.clear()
+        originalDataSet.addAll(topics)
         myData.clear()
         myData.addAll(topics)
+        notifyDataSetChanged()
+    }
+
+    fun filterData(filterText: String) {
+        val myList = originalDataSet.filter {
+            it.Text?.contains(filterText) ?: false
+        }
+        myData.clear()
+        myData.addAll(myList)
+        notifyDataSetChanged()
+    }
+
+    fun sort(sortOrder: SortOrder) {
+        when (sortOrder) {
+            SortOrder.Ascending -> myData.sortBy { it.Text }
+            SortOrder.Descending -> myData.sortByDescending { it.Text }
+        }
         notifyDataSetChanged()
     }
 
