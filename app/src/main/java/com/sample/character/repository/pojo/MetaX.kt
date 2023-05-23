@@ -1,0 +1,33 @@
+package com.sample.character.repository.pojo
+
+data class MetaX(
+    val attribution: Any,
+    val blockgroup: Any,
+    val created_date: String,
+    val description: String,
+    val designer: Any,
+    val dev_date: String,
+    val dev_milestone: String,
+    val developer: List<DeveloperX>,
+    val example_query: String,
+    val id: String,
+    val is_stackexchange: Int,
+    val js_callback_name: String,
+    val live_date: Any,
+    val maintainer: MaintainerX,
+    val name: String,
+    val perl_module: String,
+    val producer: Any,
+    val production_state: String,
+    val repo: String,
+    val signal_from: String,
+    val src_domain: String,
+    val src_id: Any,
+    val src_name: String,
+    val src_options: SrcOptionsX,
+    val src_url: String,
+    val status: Any,
+    val tab: String,
+    val topic: List<Any>,
+    val unsafe: Any
+)

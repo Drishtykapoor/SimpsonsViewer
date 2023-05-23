@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/simpsonsHomeFragment"
-        android:name="com.sample.simpsonsviewer.view.SimpsonsHomeFragment">
+        android:name="com.sample.character.view.SimpsonsHomeFragment">
         <action
             android:id="@+id/action_simpsonsHomeFragment_to_simpsonsDetailFragment"
             app:destination="@id/simpsonsDetailFragment" />
@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/simpsonsDetailFragment"
-        android:name="com.sample.simpsonsviewer.view.SimpsonsDetailFragment">
+        android:name="com.sample.character.view.SimpsonsDetailFragment">
         <argument
             android:name="item_id"
             android:defaultValue=""

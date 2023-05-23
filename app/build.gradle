@@ -8,20 +8,28 @@ plugins {
 
 android {
 
-    namespace 'com.sample.simpsonsviewer'
+    namespace 'com.sample.character'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.sample.simpsonsviewer"
+        applicationId "com.sample.character"
         minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+        flavorDimensions += "version"
+        productFlavors {
+            create("simspsons") {
+                dimension = "version"
+                applicationIdSuffix = ".simspsons"
+                manifestPlaceholders = [appLabel : "SimpsonsVariant"]
+            }
+            create("wire") {
+                dimension = "version"
+                applicationIdSuffix = ".wire"
+                manifestPlaceholders = [appLabel : "WireVariant"]
             }
         }
     }

@@ -6,7 +6,7 @@
     app:startDestination="@id/simpsonsDetailFragment">
     <fragment
         android:id="@+id/simpsonsDetailFragment"
-        android:name="com.sample.simpsonsviewer.view.SimpsonsDetailFragment"
+        android:name="com.sample.character.view.SimpsonsDetailFragment"
         tools:layout="@layout/simpsons_detail_fragment">
         <argument
             android:name="item_id"
