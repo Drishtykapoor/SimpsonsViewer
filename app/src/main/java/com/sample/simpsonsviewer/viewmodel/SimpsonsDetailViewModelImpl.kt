@@ -13,7 +13,6 @@ import java.time.format.DateTimeFormatter
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.ExperimentalTime
 
-@OptIn(ExperimentalTime::class)
 class SimpsonsDetailViewModelImpl(private val homeRepository: SimpsonsHomeRepository) : ViewModel(),
     SimpsonsDetailViewModel {
 

@@ -9,7 +9,7 @@ abstract class SimpsonsHomeFragmentModule {
 
     @ContributesAndroidInjector(
         modules = [
-            SimpsonsHomeFragmentDependenciesModule::class,
+            SimpsonsHomeFragmentDependenciesModule::class
         ]
     )
     abstract fun provideHomeFragment(): SimpsonsHomeFragment

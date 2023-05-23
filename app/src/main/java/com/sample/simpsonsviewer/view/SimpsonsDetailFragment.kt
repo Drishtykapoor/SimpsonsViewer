@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.sample.simpsonsviewer.R
 import com.sample.simpsonsviewer.databinding.SimpsonsDetailFragmentBinding
+import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerFragment
 
 class SimpsonsDetailFragment : DaggerFragment() {
 
     private lateinit var binding: SimpsonsDetailFragmentBinding
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,12 +24,21 @@ class SimpsonsDetailFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val data = arguments?.getString("name", "No Value passed")
-        binding.teamDescription.text = data
 
-//        Picasso.with(context)
-//            .load(character[0].Icon?.URL ?: "")
-//            .into(binding.image)
+        val titleData = arguments?.getString("name", "No Value passed")
+        val descriptionData = arguments?.getString("description", "No value passed")
+        val imageData = arguments?.getString("image", "No value passed")
+
+        binding.title.text = titleData
+        binding.description.text = descriptionData
+        if (imageData != null) {
+            if (imageData.isNotEmpty()) {
+                Picasso.with(context)
+                    .load(imageData)
+                    .placeholder(R.drawable.duck)
+                    .into(binding.image)
+            }
+        }
 
     }
 

@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sample.simpsonsviewer.repository.viewstate.SimpsonsResponseState
 import com.sample.simpsonsviewer.repository.SimpsonsHomeRepository
+import com.sample.simpsonsviewer.repository.pojo.RelatedTopic
+import com.sample.simpsonsviewer.repository.viewstate.SimpsonsResponseState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -35,10 +36,22 @@ class SimpsonsHomeViewModelImpl @Inject constructor(
                 if (response.isSuccessful) {
                     if (response.body() != null) {
                         response.body()?.let {
-                            liveData.postValue(SimpsonsResponseState.Success(it))
+                            val relatedTopicList = mutableListOf<RelatedTopic>()
+                            for (i in 0 until it.RelatedTopics.size) {
+                                relatedTopicList.add(
+                                    RelatedTopic(
+                                        it.RelatedTopics[i].FirstURL,
+                                        it.RelatedTopics[i].Icon,
+                                        it.RelatedTopics[i].Result,
+                                        it.RelatedTopics[i].Text?.split("-")?.get(0) ?: "",
+                                        it.RelatedTopics[i].Text
+                                    )
+                                )
+                            }
+                            val data = it.copy(RelatedTopics = relatedTopicList)
+                            liveData.postValue(SimpsonsResponseState.Success(data))
                         }
-                    }
-                    else
+                    } else
                         liveData.postValue(SimpsonsResponseState.Empty)
                 } else
                     liveData.postValue(SimpsonsResponseState.Error(response.message()))

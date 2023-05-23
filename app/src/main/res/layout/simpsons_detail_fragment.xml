@@ -14,18 +14,18 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:padding="10dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/duck"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/teamTitle"
+            android:id="@+id/simpTitle"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_marginVertical="@dimen/margin_large"
             android:gravity="center_vertical"
             android:paddingStart="@dimen/padding_large"
             android:paddingEnd="@dimen/padding_large"
-            android:text="@string/item_description"
+            android:text="@string/item_title"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -46,11 +46,11 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/teamTitle"
-            app:layout_constraintTop_toTopOf="@+id/teamTitle" />
+            app:layout_constraintStart_toEndOf="@+id/simpTitle"
+            app:layout_constraintTop_toTopOf="@+id/simpTitle" />
 
         <TextView
-            android:id="@+id/teamDescription"
+            android:id="@+id/simpDescription"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_marginVertical="@dimen/margin_large"
@@ -62,7 +62,7 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teamTitle"
+            app:layout_constraintTop_toBottomOf="@+id/simpTitle"
             app:layout_constraintWidth_min="@dimen/sat_score_label_min_width" />
 
         <TextView
@@ -80,8 +80,8 @@
             android:maxLines="8"
             android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/teamDescription"
-            app:layout_constraintTop_toTopOf="@+id/teamDescription" />
+            app:layout_constraintStart_toEndOf="@+id/simpDescription"
+            app:layout_constraintTop_toTopOf="@+id/simpDescription" />
 
         <TextView
             android:id="@+id/events_error_view"
@@ -99,7 +99,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teamDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/simpDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

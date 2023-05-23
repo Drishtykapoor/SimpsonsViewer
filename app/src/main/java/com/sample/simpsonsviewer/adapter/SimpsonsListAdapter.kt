@@ -20,6 +20,7 @@ class SimpsonsListAdapter @Inject constructor(val navController: NavController) 
 
     private val myData = mutableListOf<RelatedTopic>()
     private val originalDataSet = mutableListOf<RelatedTopic>()
+    val imagePrefixUrl = "https://duckduckgo.com/"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -37,27 +38,33 @@ class SimpsonsListAdapter @Inject constructor(val navController: NavController) 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.title)
-        private val image: ImageView = itemView.findViewById(R.id.image_view)
+        private val image: ImageView = itemView.findViewById(R.id.image_item)
 
         init {
             itemView.setOnClickListener {
-                navController.navigate(R.id.simpsonsDetailFragment, Bundle().apply {
-                    this.putString("name", myData[bindingAdapterPosition].Text)
-                })
+
+                val bundle = Bundle()
+                bundle.putString("name", myData[bindingAdapterPosition].Name)
+                bundle.putString("description", myData[bindingAdapterPosition].Text)
+                bundle.putString("image", imagePrefixUrl+myData[bindingAdapterPosition].Icon?.URL)
+
+                navController.navigate(R.id.simpsonsDetailFragment, bundle)
             }
         }
 
-        fun onBind(topic: RelatedTopic) {
+        fun onBind(topic: RelatedTopic){
             name.text = topic.Text
             topic.Icon?.URL?.let {
-                Picasso
-                    .with(image.context)
-                    .load(it)
-                    .into(image)
+                if(it.isNotEmpty())
+                    Picasso
+                        .with(itemView.context)
+                        .load(imagePrefixUrl+it)
+                        .into(image)
             }
-
         }
     }
+
+
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(topics: List<RelatedTopic>) {

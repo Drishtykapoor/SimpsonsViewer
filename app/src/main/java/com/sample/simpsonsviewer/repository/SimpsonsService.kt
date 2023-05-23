@@ -12,7 +12,7 @@ interface SimpsonsService {
     @Headers("Content-Type: application/json")
     @GET("/")
     suspend fun getData(
-        @Query("q") q: String = "simpsons",
+        @Query("q") q: String = "simpsons characters",
         @Query("format") format: String = "json"
     ): Response<Simpsons>
 

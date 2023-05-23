@@ -13,4 +13,5 @@
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="enter_search_text_here">Search Here</string>
+    <string name="item_title">Title</string>
 </resources>
